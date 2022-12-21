@@ -35,13 +35,37 @@
 # 4 задача
 # алгоритм перемешивания 
 
-import datetime
-a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-def random_position(max_znach):
-    random_nums = datetime.datetime.now().microsecond/10**6 #случайный множитель зависит от времени
-    return random_nums*max_znach # получение случайного индеска из списка
+# import datetime
+# a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+# def random_position(max_znach):
+#     random_nums = datetime.datetime.now().microsecond/10**6 #случайный множитель зависит от времени
+#     return random_nums*max_znach # получение случайного индеска из списка
 
-for i in range(len(a)-1,-1,-1):
-    j= int(random_position(i+1))
-    a[i],a[j] = a[j],a[i]
-print(a)
+# for i in range(len(a)-1,-1,-1):
+#     j= int(random_position(i+1))
+#     a[i],a[j] = a[j],a[i]
+# print(a)
+
+# 5 задача
+# Задайте список из N элементов, заполненных числами из промежутка [-N, N]. 
+# Найдите произведение элементов на указанных позициях. Позиции хранятся в файле file.txt в одной строке одно число.
+
+file = open('file.txt','r')
+arch =[]
+listZnach=[]
+resultZnach=[]
+sum=0
+for row in file: # цикл прохода про строчкам
+    arch.append(int(row.strip()))
+file.close()
+print(f"{arch}, полученный список позиций из файла")
+numbers =int(input("введите число N: "))
+for i in range(-numbers,numbers+1):
+    listZnach.append(int(i))
+print(f"{listZnach}, значения в диапазоне -N, N")
+for k in arch:
+    if k<len(listZnach):
+        sum+=listZnach[k]
+    else:
+        print(f"значения в списке выходят за границу списка значений от {-numbers} до {numbers} ")
+print(sum)
